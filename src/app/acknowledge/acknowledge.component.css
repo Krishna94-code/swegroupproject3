@@ -1,0 +1,60 @@
+/*Navigation link list */
+.nav li a {
+    display: block;
+    color: #ccc;
+    padding: 8px 16px;
+    text-decoration: none;
+  }
+  .nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    width: 15%;
+    background-color:#006633;
+    position: absolute;
+    height: 10%;
+    overflow: auto;
+  }
+  
+  /* visited link */
+  .nav a:visited
+   {
+    color:white;
+  }
+  
+  /* mouse over link */
+  .nav a:hover 
+  {
+    color:#ffcc33;
+  }
+  
+  /* selected link */
+  .nav a:active
+   {
+    color: yellow;
+  }
+  body{
+    background-color:white;
+  }
+  
+  h2{
+    background-color:#ffcc33;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    box-sizing: border-box;
+    color: black;
+  }
+  a{
+    color:#006633;
+    font-size: large;
+  }
+  .form{
+    background-color:whitesmoke;
+    border:2px solid #006633;
+    margin: auto;
+    width: 60%;
+    height: 120%;
+    font-size: medium;
+   color:#006633;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    padding: 12px;
+  }
