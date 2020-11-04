@@ -67,8 +67,7 @@
           },
           "configurations": {
             "production": {
-              "browserTarget": "HelloWorld:build:production",
-              "proxyConfig":  "./proxy.conf.json"
+              "browserTarget": "HelloWorld:build:production"
             }
           }
         },

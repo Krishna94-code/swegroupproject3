@@ -1,0 +1,15 @@
+  .container-header {
+    background-color:#006633;
+    box-shadow: 5px 10px #ffcc33;
+    text-transform:uppercase;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    font-size:xx-large;
+    padding:5px;
+    text-align:center;
+    color:white;
+    border:5px solid #ffcc33;
+    background-image:url(../../assets/images/Mason.png);
+    background-position: right;
+    background-repeat: no-repeat;
+    background-size: contain;
+  }

@@ -1,0 +1,19 @@
+#footer {
+    
+    position: fixed;
+    top:550px;
+    left:1200px;
+    bottom:20px;
+    right: 0px;
+    text-align: right;
+    
+  }
+
+  .container-footer {
+    background-color: #006633;
+    padding: 20px;
+   color:#FFCC33;
+    background: #006633;
+    margin-top: 20px;
+    
+  }

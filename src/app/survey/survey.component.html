@@ -1,0 +1,289 @@
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<app-header> </app-header>
+<div class="nav">
+	<ul>
+		<li><a href="">HOME</a></li>
+	</ul>
+</div>
+<!--form with autocomplete feature -->
+<form #surveyForm="ngForm" class="form" name="form" method="post" autocomplete="on"
+	(ngSubmit)="surveyForm.form.valid && onSubmit(surveyForm.value)">
+	<!--studentData Section-->
+	<div *ngIf="(loadingFailure)" class="alert-danger">Error inserting student record
+
+	</div>
+	<div ngModelGroup="studentData">
+		<!--studentId-->
+		<div class="w3-row">
+			<div class="w3-col w3-container" style="width: 32%">
+				<label for="studentId">Student ID:</label><span class="required">*</span>
+			</div>
+			<div class="w3-col w3-container" style="width: 68%">
+				<input class="inputer" type="number" min="1" id="studentId" name="studentId" ngModel
+					#studentId="ngModel" placeholder="studentId" required autofocus />
+				<div *ngIf="studentId.invalid && (surveyForm.submitted )" class="alert-danger">
+					<div [hidden]="!studentId.errors.required">
+						StudentId is required.
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+
+		<!--UserName-->
+		<div class="w3-row">
+			<div class="w3-col w3-container" style="width: 32%">
+				<label for="uname">User Name:</label><span class="required">*</span>
+
+			</div>
+			<div class="w3-col w3-container" style="width: 68%">
+				<input class="inputer" type="text" id="uname" name="username" ngModel placeholder="user name" required
+					autofocus #username="ngModel" pattern="[a-zA-Z\s]*" />
+				<div *ngIf=" username.invalid && (surveyForm.submitted)" class="alert-danger">
+					<div [hidden]="!username.errors.required">
+						username is required.
+					</div>
+					<div [hidden]="!username.errors.pattern">
+						username needs to alphabet.
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+		<!--Streetaddress-->
+		<div class="w3-row">
+			<div class="w3-col w3-container" style="width: 32%">
+				<label for="streetaddress">Street address:</label><span class="required">*</span>
+			</div>
+			<div class="w3-col w3-container" style="width: 68%">
+				<input class="inputer" type="text" id="streetaddress" #streetaddress="ngModel"
+					pattern="^[0-9a-zA-Z\s]+$" required ngModel name="streetaddress" />
+				<div *ngIf=" streetaddress.invalid && (surveyForm.submitted)" class="alert-danger">
+					<div [hidden]="!streetaddress.errors.required">
+						Street address is required.
+					</div>
+					<div [hidden]="!streetaddress.errors.pattern">
+						Street address needs to alphanumeric.
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+		<!--City-->
+		<div class="w3-row">
+			<div class="w3-col w3-container" style="width: 32%">
+				<label for="City">City:</label>
+			</div>
+			<div class="w3-col w3-container" style="width: 68%">
+				<input class="inputer" type="text" id="City" name="city" ngModel />
+			</div>
+		</div>
+
+
+		<!--State-->
+
+		<div class="w3-row">
+			<div class="w3-col w3-container" style="width: 32%">
+				<label for="State">State:</label>
+			</div>
+			<div class="w3-col w3-container" style="width: 68%">
+				<input class="inputer" type="text" id="State" name="state" ngModel />
+			</div>
+		</div>
+
+		<!--Zip-->
+
+		<div class="w3-row">
+			<div class="w3-col w3-container" style="width: 32%">
+				<label for="Zip">Zip:</label>
+			</div>
+			<div class="w3-col w3-container" style="width: 68%">
+				<input class="inputer" type="number" id="Zip" name="zip" ngModel />
+			</div>
+		</div>
+
+
+		<!--Telephone number-->
+		<div class="w3-row">
+			<div class="w3-col w3-container" style="width: 32%">
+				<label for="tel">Telephone number:</label>
+			</div>
+
+			<div class="w3-col w3-container" style="width: 68%">
+				<input class="inputer" type="tel" name="tel" placeholder="(###)###-####" ngModel />
+			</div>
+		</div>
+
+		<!--Email-->
+		<div class="w3-row">
+			<div class="w3-col w3-container" style="width: 32%">
+				<label for="email">E-mail:</label>
+				<span class="required">*</span>
+			</div>
+
+			<div class="w3-col w3-container" style="width: 68%">
+				<input class="inputer" type="email" id="email" name="email" placeholder="name@domain.com" required
+					ngModel #email="ngModel" pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" />
+				<div *ngIf="email.invalid && (surveyForm.submitted)" class="alert-danger">
+					<div [hidden]="!email.errors.required">
+						email is required.
+					</div>
+					<div [hidden]="!email.errors.pattern">
+						email is not valid.
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!--URL-->
+		<div class="w3-row">
+			<div class="w3-col w3-container" style="width: 32%">
+				<label for="url">URL:</label>
+			</div>
+
+			<div class="w3-col w3-container" style="width: 68%">
+				<input class="inputer" type="url" id="url" name="url" placeholder="http://domainname.com" ngModel />
+			</div>
+		</div>
+
+		<!--Date Of Survey-->
+		<div class="w3-row">
+			<div class="w3-col w3-container" style="width: 32%">
+				<label for="date">DateofSurvey:</label>
+			</div>
+			<div class="w3-col w3-container" style="width: 68%">
+				<input class="inputer" type="date" id="Date of Survey" name="dos" placeholder="yyyy-mm-dd" ngModel
+					#dos="ngModel" />
+			</div>
+		</div>
+
+		<!--Liked most about the campus using checkbox-->
+		<div class="w3-row">
+			<div class="w3-col w3-container" style="width: 32%">
+				<p>What did you like the most about the campus?</p>
+			</div>
+
+			<div class="w3-col w3-container" style="width: 68%">
+				<span *ngFor="let option of options">
+					<label>{{option.name}}
+						<input class="inputer" type="checkbox" name="likedMost" value="" [(ngModel)]="option.checked" />
+					</label>
+				</span>
+
+			</div>
+		</div>
+
+		<!--Interested in the university using radio buttons-->
+		<div class="w3-row">
+			<div class="w3-col w3-container" style="width: 32%">
+				<p>How did you get interested in the university?</p>
+			</div>
+
+			<div class="w3-col w3-container" style="width: 68%">
+
+				<span *ngFor="let radioOption of radioOptions" >
+					<label>{{radioOption}}
+						<input class="inputer" name="Get_interested" type="radio" value="{{radioOption}}" ngModel required />
+					</label>
+				
+				</span>
+			</div>
+		</div>
+
+
+		<!--High school graduation date using datalist feature for month-->
+		<div class="w3-row">
+
+			<div class="w3-col w3-container" style="width: 32%">
+				<label>High School Graduation date</label><span class="required">*</span>
+			</div>
+
+			<div class="w3-col w3-container" style="width: 68%">
+				<input list="month" name="gradmonth" placeholder="month" ngModel #month="ngModel" required>
+				<div *ngIf="month.invalid && (surveyForm.submitted)" class="alert-danger">
+					<div [hidden]="!month.errors.required">
+						month is required.
+					</div>
+				</div>
+				<datalist id="month">
+					<option value="January">
+					<option value="February">
+					<option value="March">
+					<option value="April">
+					<option value="May">
+					<option value="June">
+					<option value="July">
+					<option value="August">
+					<option value="September">
+					<option value="October">
+					<option value="November">
+					<option value="December">
+				</datalist>
+				<input type="text" style="width: 271px" placeholder="year" name="gradyear" ngModel #gradyear="ngModel"
+					required />
+				<div *ngIf="gradyear.invalid && (surveyForm.submitted)" class="alert-danger">
+					<div [hidden]="!gradyear.errors.required">
+						year is required.
+					</div>
+				</div>
+			</div>
+		</div>
+		<br>
+		<!--Comments-->
+		<div class="w3-row">
+			<div class="w3-col w3-container" style="width: 32%">
+				<label>Comments:</label>
+			</div>
+			<div class="w3-col w3-container" style="width: 68%">
+				<textarea style="width:60%" name="Comments" class="form-control" ngModel
+					rows="3">Enter Comments </textarea>
+			</div>
+		</div>
+		<br>
+
+
+		<!--Recommendation using Dropdown list-->
+		<div class="w3-row">
+			<div class="w3-col w3-container" style="width: 32%">
+				<label>How likely is that you recommend this school to other prospective students?
+				</label>
+			</div>
+
+			<div class="w3-col w3-container" style="width: 68%">
+				<select name="Recommendation" ngModel>
+					<option selected="selected">Very likely</option>
+					<option>Likely</option>
+					<option>Unlikely</option>
+				</select>
+			</div>
+
+		</div>
+	</div>
+	<!--Data Section-->
+	<div class="w3-row">
+		<div class="w3-col w3-container" style="width: 32%">
+			<label>Data:</label>
+		</div>
+
+		<div class="w3-col w3-container" style="width: 68%">
+			<textarea type="text" rows="4" cols="20" id="nums" name="nums" placeholder="Enter 10 numbers"
+				[(ngModel)]="numbers" required #nums="ngModel"
+				(mouseout)="validNumber=validateTextAreaInput()"></textarea>
+			<div *ngIf="(nums.invalid || !validNumber) && (nums.touched ||surveyForm.submitted)" class="alert-danger">
+				<div [hidden]="!nums.errors.required">
+					Enter comma separated 10 numbers between 1-100.
+				</div>
+			</div>
+
+		</div>
+	</div>
+	<!--Submit button-->
+	<div class="w3-row">
+		<input type="submit" value="Submit" onclick="">
+		<input class="reset" type="button" onclick="reset()" value="Reset">
+	</div>
+</form>
+<app-footer> </app-footer>

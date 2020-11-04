@@ -1,0 +1,189 @@
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<app-header> </app-header>
+<div class="nav">
+    <ul>
+        <li><a href="">HOME</a></li>
+    </ul>
+</div>
+<!--form with autocomplete feature -->
+<form class="form" name="form">
+
+    <div *ngIf="(loadingFailure)" class="alert alert-danger">Error fetching student record
+
+    </div>
+
+    <!--studentId-->
+    <div class="w3-row">
+        <div class="w3-col w3-container" style="width: 32%">
+            <label for="studentId">Student ID:</label><span class="required">*</span>
+        </div>
+        <div class="w3-col w3-container" style="width: 68%">
+
+            <input class="inputer" type="text" id="studentId" name="studentId" disabled value="{{student.studentId}}" />
+        </div>
+    </div>
+    <!--UserName-->
+    <div class="w3-row">
+        <div class="w3-col w3-container" style="width: 32%">
+            <label for="uname">User Name:</label><span class="required">*</span>
+        </div>
+        <div class="w3-col w3-container" style="width: 68%">
+
+            <input class="inputer" type="text" id="uname" name="username" placeholder="user name" disabled
+                value="{{student.username}}" />
+        </div>
+    </div>
+    <!--Streetaddress-->
+    <div class="w3-row">
+        <div class="w3-col w3-container" style="width: 32%">
+            <label for="streetaddress">Street address:</label>
+        </div>
+        <div class="w3-col w3-container" style="width: 68%">
+            <input class="inputer" type="text" id="streetaddress" name="streetaddress" disabled
+                value="{{student.streetaddress}}" />
+        </div>
+    </div>
+
+    <!--City-->
+    <div class="w3-row">
+        <div class="w3-col w3-container" style="width: 32%">
+            <label for="City">City:</label>
+        </div>
+        <div class="w3-col w3-container" style="width: 68%">
+            <input class="inputer " type="text" id="City" name="city" disabled value="{{student.city}}" />
+        </div>
+    </div>
+
+    <!--State-->
+    <div class="w3-row">
+        <div class="w3-col w3-container" style="width: 32%">
+            <label for="State">State:</label>
+        </div>
+        <div class="w3-col w3-container" style="width: 68%">
+            <input class="inputer" type="text" id="State" name="state" disabled value="{{student.state}}" />
+        </div>
+    </div>
+
+    <!--Zip-->
+    <div class="w3-row">
+        <div class="w3-col w3-container" style="width: 32%">
+            <label for="Zip">Zip:</label>
+        </div>
+        <div class="w3-col w3-container" style="width: 68%">
+            <input class="inputer" type="text" id="Zip" name="zip" disabled value="{{student.zip}}" />
+        </div>
+    </div>
+
+    <!--Telephone number-->
+    <div class="w3-row">
+        <div class="w3-col w3-container" style="width: 32%">
+            <label for="tel">Telephone number:</label>
+        </div>
+        <div class="w3-col w3-container" style="width: 68%">
+            <input class="inputer" type="tel" name="tel" disabled value="{{student.tel}}" />
+        </div>
+    </div>
+
+    <!--Email-->
+    <div class="w3-row">
+        <div class="w3-col w3-container" style="width: 32%">
+            <label for="email">E-mail:</label><span class="required">*</span>
+        </div>
+        <div class="w3-col w3-container" style="width: 68%">
+            <input class="inputer" type="email" id="email" name="email" disabled value="{{student.email}}" />
+        </div>
+    </div>
+
+    <!--URL-->
+    <div class="w3-row">
+        <div class="w3-col w3-container" style="width: 32%">
+            <label for="url">URL:</label>
+        </div>
+        <div class="w3-col w3-container" style="width: 68%">
+            <input class="inputer" type="url" id="url" name="url" disabled value="{{student.url}}" />
+        </div>
+    </div>
+
+    <!--Date Of Survey-->
+    <div class="w3-row">
+        <div class="w3-col w3-container" style="width: 32%">
+            <label for="date">DateofSurvey:</label><span class="required">*</span>
+        </div>
+        <div class="w3-col w3-container" style="width: 68%">
+            <input class="inputer" type="date" id="Date of Survey" name="dos" disabled value="{{student.dos}}" />
+        </div>
+    </div>
+
+    <!--Liked most about the campus using checkbox-->
+    <div class="w3-row">
+        <div class="w3-col w3-container" style="width: 32%">
+            <p>What did you like the most about the campus?</p>
+        </div>
+
+        <div class="w3-col w3-container" style="width: 68%">
+            <span *ngFor="let option of student.likedMost">
+                <label>{{option}}
+                    <input class="inputer" type="checkbox" name="likedMost" checked disabled />
+                </label>
+            </span>
+
+        </div>
+    </div>
+
+    <!--Interested in the university using radio buttons-->
+    <div class="w3-row">
+        <div class="w3-col w3-container" style="width: 32%">
+            <p>How did you get interested in the university?</p>
+        </div>
+
+        <div class="w3-col w3-container" style="width: 68%">
+
+            <label>{{student.Get_interested}}
+                <input class="inputer" name="Get_interested" type="radio" checked disabled />
+            </label>
+
+        </div>
+    </div>
+
+
+    <!--High school graduation date using datalist feature for month-->
+    <div class="w3-row">
+        <div class="w3-col w3-container" style="width: 32%">
+            <label>HighSchool Graduation date</label><span class="required">*</span>
+        </div>
+        <div class="w3-col w3-container" style="width: 68%">
+            <input list="month" name="gradmonth" placeholder="month" disabled value="{{student.gradmonth}}"> <input
+                type="text" style="width: 271px" placeholder="year" name="gradyear" name="Year" disabled
+                value="{{student.gradyear}}" />
+        </div>
+    </div>
+
+    <!--Comments-->
+    <div class="w3-row">
+        <div class="w3-col w3-container" style="width: 32%">
+            <label>Comments:</label>
+        </div>
+        <div class="w3-col w3-container" style="width: 68%">
+            <textarea name="Comments" class="inputer" rows="3" disabled> {{student.Comments}}</textarea>
+        </div>
+    </div>
+
+    <!--Recommendation using Dropdown list-->
+    <div class="w3-row">
+        <div class="w3-col w3-container" style="width: 32%">
+            <label>How likely is that you recommend this school to
+                other prospective students?
+
+            </label>
+        </div>
+        <div class="w3-col w3-container" style="width: 68%">
+            <input class="inputer" name="Recommendation" disabled value=" {{student.Recommendation}}" />
+        </div>
+
+    </div>
+
+
+
+</form>
+
+<app-footer> </app-footer>
