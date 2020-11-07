@@ -1,0 +1,62 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: swe645-angular
+  name: swe645-angular
+  namespace: default
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: swe645-angular
+  strategy:
+    rollingUpdate:
+      maxSurge: 50%
+      maxUnavailable: 25%
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: swe645-angular
+    spec:
+      containers:
+        - image: swe645group/swe645third:{buildNumber}
+          name: swe645-angular
+---
+apiVersion: autoscaling/v2beta1
+kind: HorizontalPodAutoscaler
+metadata:
+  labels:
+    app: swe645-angular
+  name: swe645-angular-hpa-munr
+  namespace: default
+spec:
+  maxReplicas: 5
+  metrics:
+    - resource:
+        name: cpu
+        targetAverageUtilization: 80
+      type: Resource
+  minReplicas: 1
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: swe645-angular
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name:  swe645-srv
+  labels:
+    run: swe645-angular
+spec:
+  type: NodePort
+  ports:
+  - name: https
+    port: 443
+    protocol: TCP
+    targetPort: 8080
+    nodePort: 31748
+  selector:
+    app: swe645-angular
