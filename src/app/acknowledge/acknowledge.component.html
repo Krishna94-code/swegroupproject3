@@ -30,15 +30,18 @@
     <h3>Below are the list of all student IDs</h3>
     <p><i>Click to retrieve the survey form data</i></p>
 
-    <div style="padding: 13px;" *ngFor="let studentId of studentIds">
+   <div style="padding: 13px;">
         <table border=1 width=50%>
-            <tr>
-                <td>
-                    <ul>
-                        <li> <a href="/student/{{studentId}}" (click)="gotoDetails(studentId)">{{studentId}}</a>
-                            <br />
-                    </ul>
-                </td>
+            <tr *ngFor="let student of studentIds; let i = index">
+                <td>{{student.studentId}}</td>
+                <td>{{student.city}}</td>
+                <td>{{student.username}}</td>
+                <td>{{student.dos}}</td>
+                <td>{{student.email}}</td>
+                <td>{{student.gradmonth}}</td>
+                <td>{{student.gradyear}}</td>
+                <td>{{student.telephone}}</td>
+                
             </tr>
         </table>
 
